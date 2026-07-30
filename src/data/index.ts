@@ -130,12 +130,11 @@ export const cases = [
 ];
 
 export const clients = [
-  { id: 'c1', name: 'Metálica Capixaba', sector: 'Indústria' },
-  { id: 'c2', name: 'Armazéns do Sul', sector: 'Logística' },
-  { id: 'c3', name: 'Rede Tropical', sector: 'Varejo' },
-  { id: 'c4', name: 'Grupo Vitória', sector: 'Serviços' },
-  { id: 'c5', name: 'Calçados Montanha', sector: 'Indústria' },
-  { id: 'c6', name: 'Transportes Costa', sector: 'Logística' },
+  { id: 'dtecnica',  name: 'Dtecnica',              sector: 'Tecnologia',       logoUrl: 'https://dtecnica.com/wp-content/uploads/2025/05/dtecnica-logo2021-210.bk_.webp' },
+  { id: 'deroyque',  name: 'Deroyque',              sector: 'Tecnologia',       logoUrl: '/assets/logos/deroyque.svg' },
+  { id: 'iuh',       name: 'IUH Digital',           sector: 'Telecom · Edu',    logoUrl: 'https://iuh.digital/wp-content/webp-express/webp-images/uploads/2025/12/iuh__logo_alt-2-768x628.png.webp' },
+  { id: 'eace',      name: 'EACE · Aprender Conectado', sector: 'Gov · Educação', logoUrl: 'https://651818aeb03babcd9aeedc490daec497.cdn.bubble.io/cdn-cgi/image/w=192,h=48,f=auto,dpr=2.5,fit=contain/f1745331952171x308140294008352200/LOGO_APRENDER_CONECTADO_CMYK-.png' },
+  { id: 'flamus',    name: 'Flamus',                sector: 'Creator Platform', logoUrl: 'https://blog.flamus.com/wp-content/uploads/2026/03/Flamus_Logo_White.svg' },
 ];
 
 export const stats = [

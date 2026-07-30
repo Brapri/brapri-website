@@ -111,11 +111,16 @@ function TrustedBy() {
       <p style={{ margin: '0 0 var(--space-6)', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
         Empresas que confiam na BRAPRI
       </p>
-      <div className="brapri-marquee" style={{ animationDuration: '32s' }}>
+      <div className="brapri-marquee" style={{ animationDuration: '28s' }}>
         {loop.map((c, i) => (
-          <div key={i} style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 3, margin: '0 var(--space-3)', padding: 'var(--space-4) var(--space-8)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', whiteSpace: 'nowrap' }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'var(--text-body-lg)', letterSpacing: '0.02em', color: 'var(--text-muted)' }}>{c.name}</span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.sector}</span>
+          <div key={i} style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 6, margin: '0 var(--space-3)', padding: 'var(--space-5) var(--space-8)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-md)', background: 'rgba(255,255,255,0.03)', whiteSpace: 'nowrap', minWidth: 120 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={c.logoUrl}
+              alt={c.name}
+              style={{ height: 34, width: 'auto', maxWidth: 150, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.65 }}
+            />
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-faint)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{c.sector}</span>
           </div>
         ))}
       </div>
