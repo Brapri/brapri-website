@@ -105,22 +105,21 @@ function StatsRow() {
 }
 
 function TrustedBy() {
+  const loop = [...clients, ...clients];
   return (
-    <Section tone="sunken" style={{ padding: 'var(--space-12) var(--gutter)' }}>
-      <Reveal variant="fade">
-        <p style={{ margin: '0 0 var(--space-8)', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
-          Empresas que confiam na BRAPRI
-        </p>
-      </Reveal>
-      <RevealGroup step={60} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 'var(--space-3)' }}>
-        {clients.map((c) => (
-          <div key={c.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, padding: 'var(--space-5) var(--space-8)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', minWidth: 160 }}>
+    <div style={{ borderTop: '1px solid var(--border-hairline)', borderBottom: '1px solid var(--border-hairline)', background: 'var(--surface-sunken)', overflow: 'hidden', padding: 'var(--space-10) 0 var(--space-8)' }}>
+      <p style={{ margin: '0 0 var(--space-6)', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
+        Empresas que confiam na BRAPRI
+      </p>
+      <div className="brapri-marquee" style={{ animationDuration: '32s' }}>
+        {loop.map((c, i) => (
+          <div key={i} style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 3, margin: '0 var(--space-3)', padding: 'var(--space-4) var(--space-8)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', whiteSpace: 'nowrap' }}>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'var(--text-body-lg)', letterSpacing: '0.02em', color: 'var(--text-muted)' }}>{c.name}</span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.sector}</span>
           </div>
         ))}
-      </RevealGroup>
-    </Section>
+      </div>
+    </div>
   );
 }
 
