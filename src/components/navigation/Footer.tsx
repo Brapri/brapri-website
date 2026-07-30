@@ -18,13 +18,16 @@ export function Footer({ columns = [], legal }: FooterProps) {
       background: 'var(--surface-sunken)',
       borderTop: '1px solid var(--border-hairline)',
     }}>
-      <div style={{
-        maxWidth: 'var(--content-max)', margin: '0 auto',
-        display: 'grid',
-        gridTemplateColumns: `1.4fr repeat(${Math.max(columns.length, 1)}, 1fr)`,
-        gap: 'var(--space-16)',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-5)' }}>
+      <div
+        className="footer-grid"
+        style={{
+          maxWidth: 'var(--content-max)', margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: `1.4fr repeat(${Math.max(columns.length, 1)}, 1fr)`,
+          gap: 'var(--space-16)',
+        }}
+      >
+        <div className="footer-logo" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-5)' }}>
           <Logo height={101} />
           {legal && (
             <p style={{

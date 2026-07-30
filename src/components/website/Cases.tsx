@@ -15,7 +15,7 @@ import { cases } from '@/data';
 function CaseRow({ item, index }: { item: typeof cases[0]; index: number }) {
   const flip = index % 2 === 1;
   return (
-    <Reveal variant="rise" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 'var(--space-16)', alignItems: 'center' }}>
+    <Reveal variant="rise" className="g-case-row" style={{ gap: 'var(--space-16)', alignItems: 'center' }}>
       <div className="brapri-photo" style={{ height: 360, order: flip ? 2 : 1, position: 'relative' }}>
         <div className="photo-placeholder">{item.photoHint}</div>
       </div>
@@ -49,14 +49,16 @@ export function Cases() {
         </div>
       </Section>
       <Section tone="sunken" style={{ padding: 'var(--space-16) var(--gutter)' }}>
-        <Reveal variant="rise" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-10)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-            <Eyebrow>Seu processo pode ser o próximo</Eyebrow>
-            <h2 style={{ margin: 0, maxWidth: '30ch', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)' }}>
-              Conte qual rotina consome o dia da sua equipe.
-            </h2>
+        <Reveal variant="rise">
+          <div className="cta-row" style={{ gap: 'var(--space-10)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+              <Eyebrow>Seu processo pode ser o próximo</Eyebrow>
+              <h2 style={{ margin: 0, maxWidth: '30ch', fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)' }}>
+                Conte qual rotina consome o dia da sua equipe.
+              </h2>
+            </div>
+            <Button size="lg" iconRight="arrow-right" onClick={() => router.push('/contato')} style={{ flex: '0 0 auto' }}>Solicitar proposta</Button>
           </div>
-          <Button size="lg" iconRight="arrow-right" onClick={() => router.push('/contato')} style={{ marginLeft: 'auto', flex: '0 0 auto' }}>Solicitar proposta</Button>
         </Reveal>
         <p style={{ marginTop: 'var(--space-8)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)' }}>
           Cases ilustrativos, redigidos como rascunho — substitua por projetos reais e resultados verificáveis antes de publicar.

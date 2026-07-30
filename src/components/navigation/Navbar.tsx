@@ -1,20 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Logo } from '@/components/brand/Logo';
 import { Button } from '@/components/core/Button';
+import { Icon } from '@/components/core/Icon';
 
-interface NavItem {
-  id: string;
-  label: string;
-  href: string;
-}
-
-interface NavbarProps {
-  items: NavItem[];
-  transparent?: boolean;
-}
+interface NavItem { id: string; label: string; href: string; }
+interface NavbarProps { items: NavItem[]; transparent?: boolean; }
 
 function NavLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
   const [hovered, setHovered] = useState(false);
@@ -45,28 +38,71 @@ function NavLink({ href, active, children }: { href: string; active: boolean; ch
 export function Navbar({ items, transparent = false }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => { setOpen(false); }, [pathname]);
+
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/' && pathname.startsWith(href));
 
   return (
-    <header style={{
-      position: 'sticky', top: 0, zIndex: 30,
-      display: 'flex', alignItems: 'center', gap: 'var(--space-10)',
-      height: 112, padding: '0 var(--gutter)',
-      background: transparent ? 'transparent' : 'rgba(8,9,10,.72)',
-      backdropFilter: transparent ? 'none' : 'var(--blur-glass)',
-      WebkitBackdropFilter: transparent ? 'none' : 'var(--blur-glass)',
-      borderBottom: `1px solid ${transparent ? 'transparent' : 'var(--border-hairline)'}`,
-    }}>
-      <Link href="/" style={{ display: 'inline-flex', cursor: 'pointer' }}>
-        <Logo height={96} />
-      </Link>
-      <nav style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)', marginLeft: 'auto' }}>
-        {items.map((it) => (
-          <NavLink key={it.id} href={it.href} active={pathname === it.href || (it.href !== '/' && pathname.startsWith(it.href))}>
-            {it.label}
-          </NavLink>
-        ))}
-      </nav>
-      <Button size="sm" onClick={() => router.push('/contato')}>Solicitar proposta</Button>
-    </header>
+    <>
+      <header
+        className="navbar-root"
+        style={{
+          position: 'sticky', top: 0, zIndex: 30,
+          display: 'flex', alignItems: 'center', gap: 'var(--space-10)',
+          height: 112, padding: '0 var(--gutter)',
+          background: transparent ? 'transparent' : 'rgba(8,9,10,.72)',
+          backdropFilter: transparent ? 'none' : 'var(--blur-glass)',
+          WebkitBackdropFilter: transparent ? 'none' : 'var(--blur-glass)',
+          borderBottom: `1px solid ${transparent ? 'transparent' : 'var(--border-hairline)'}`,
+        }}
+      >
+        <Link href="/" style={{ display: 'inline-flex', cursor: 'pointer' }}>
+          <span className="nav-logo-wrap"><Logo height={96} /></span>
+        </Link>
+
+        <nav className="nav-links" style={{ marginLeft: 'auto' }}>
+          {items.map((it) => (
+            <NavLink key={it.id} href={it.href} active={isActive(it.href)}>
+              {it.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <span className="nav-cta">
+          <Button size="sm" onClick={() => router.push('/contato')}>Solicitar proposta</Button>
+        </span>
+
+        <button
+          className="nav-burger"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <Icon name={open ? 'x' : 'menu'} size={24} />
+        </button>
+      </header>
+
+      {open && (
+        <nav className="nav-drawer">
+          {items.map((it) => (
+            <Link
+              key={it.id}
+              href={it.href}
+              className={`nav-drawer-link${isActive(it.href) ? ' is-active' : ''}`}
+              onClick={() => setOpen(false)}
+            >
+              {it.label}
+            </Link>
+          ))}
+          <span className="nav-drawer-cta">
+            <Button fullWidth size="lg" onClick={() => { router.push('/contato'); setOpen(false); }}>
+              Solicitar proposta
+            </Button>
+          </span>
+        </nav>
+      )}
+    </>
   );
 }

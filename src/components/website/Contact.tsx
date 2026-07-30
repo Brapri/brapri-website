@@ -27,7 +27,7 @@ export function Contact() {
 
   return (
     <Section style={{ padding: 'var(--space-24) var(--gutter) var(--section-y)', background: 'var(--gradient-page-veil), var(--surface-page)' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,.9fr)', gap: 'var(--space-20)', alignItems: 'start' }}>
+      <div className="g-2-109" style={{ gap: 'var(--space-20)', alignItems: 'start' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
           <Reveal variant="rise">
             <SectionHeading level="h1" eyebrow="Contato" title="Solicite uma proposta" description="Conte o essencial sobre sua operação. Retornamos com escopo, prazo e investimento em até 1 dia útil." />
@@ -52,15 +52,15 @@ export function Contact() {
                 Responderemos em até 1 dia útil no e-mail informado.
               </Alert>
             )}
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 'var(--space-5)', minWidth: 0 }}>
+            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
               <Field style={{ minWidth: 0 }} label="Nome" required><Input placeholder="Seu nome" /></Field>
               <Field style={{ minWidth: 0 }} label="Empresa" required><Input placeholder="Razão social" /></Field>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 'var(--space-5)', minWidth: 0 }}>
+            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
               <Field style={{ minWidth: 0 }} label="E-mail corporativo" required><Input type="email" icon="mail" placeholder="nome@empresa.com.br" /></Field>
               <Field style={{ minWidth: 0 }} label="Telefone"><Input icon="phone" placeholder="(28) 90000-0000" /></Field>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 'var(--space-5)', minWidth: 0 }}>
+            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
               <Field style={{ minWidth: 0 }} label="Segmento">
                 <Select options={['Indústria', 'Varejo', 'Logística', 'Serviços', 'Setor público', 'Outro']} />
               </Field>

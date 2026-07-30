@@ -13,7 +13,7 @@ export function About() {
   return (
     <>
       <Section style={{ padding: 'var(--space-24) var(--gutter) var(--space-16)', background: 'var(--gradient-page-veil), var(--surface-page)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.2fr) minmax(0,.8fr)', gap: 'var(--space-20)', alignItems: 'center' }}>
+        <div className="g-2-12" style={{ gap: 'var(--space-20)', alignItems: 'center' }}>
           <SectionHeading
             level="h1"
             eyebrow="Empresa"
@@ -32,7 +32,7 @@ export function About() {
         </div>
       </Section>
       <Section style={{ padding: '0 var(--gutter) var(--space-16)' }}>
-        <Reveal variant="blur" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'var(--space-5)' }}>
+        <Reveal variant="blur" className="g-photos" style={{ gap: 'var(--space-5)' }}>
           <div className="brapri-photo" style={{ height: 380, position: 'relative' }}>
             <div className="photo-placeholder">Foto da equipe de desenvolvimento (paisagem, 1800×1200)</div>
           </div>
@@ -42,7 +42,7 @@ export function About() {
         </Reveal>
       </Section>
       <Section style={{ padding: '0 var(--gutter) var(--section-y)' }}>
-        <RevealGroup step={100} style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 'var(--space-5)' }}>
+        <RevealGroup step={100} className="g-3" style={{ gap: 'var(--space-5)' }}>
           {([
             ['target', 'O que fazemos', 'Desenvolvemos sistemas sob medida, integramos os sistemas que você já usa e automatizamos as rotinas manuais da operação.'],
             ['map-pin', 'Onde atendemos', 'Base em Iconha/ES, com atendimento presencial no sul do estado e remoto em todo o Brasil.'],
@@ -58,9 +58,9 @@ export function About() {
       </Section>
       <Section tone="sunken" style={{ padding: 'var(--space-16) var(--gutter)' }}>
         <Eyebrow>Compromissos de entrega</Eyebrow>
-        <div style={{ marginTop: 'var(--space-8)', display: 'grid', gridTemplateColumns: 'repeat(4,minmax(0,1fr))' }}>
+        <div className="g-stats stats-row" style={{ marginTop: 'var(--space-8)' }}>
           {stats.map((s, i) => (
-            <div key={s.label} style={{ padding: '0 var(--space-8)', borderLeft: i === 0 ? 'none' : '1px solid var(--border-hairline)' }}>
+            <div key={s.label} className="stats-item" style={{ padding: '0 var(--space-8)', borderLeft: i === 0 ? 'none' : '1px solid var(--border-hairline)' }}>
               <StatBlock value={s.value} suffix={s.suffix} label={s.label} />
             </div>
           ))}

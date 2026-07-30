@@ -26,8 +26,10 @@ export function Services() {
         </Reveal>
       </Section>
       <Section style={{ padding: '0 var(--gutter) var(--section-y)' }}>
-        <Tabs items={services.map((s) => ({ id: s.id, label: s.title }))} value={tab} onChange={setTab} style={{ marginBottom: 'var(--space-10)' }} />
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,.8fr)', gap: 'var(--space-12)', alignItems: 'start' }}>
+        <div className="tabs-wrap">
+          <Tabs items={services.map((s) => ({ id: s.id, label: s.title }))} value={tab} onChange={setTab} style={{ marginBottom: 'var(--space-10)' }} />
+        </div>
+        <div className="g-2-108" style={{ gap: 'var(--space-12)', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 56, height: 56, borderRadius: 'var(--radius-md)', background: 'var(--accent-quiet)', border: '1px solid rgba(192,168,84,.28)', color: 'var(--text-accent)' }}>
               <Icon name={active.icon} size={26} />
@@ -42,7 +44,7 @@ export function Services() {
                 </li>
               ))}
             </ul>
-            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-2)' }}>
+            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-2)', flexWrap: 'wrap' }}>
               <Button onClick={() => router.push('/contato')} iconRight="arrow-right">Solicitar proposta</Button>
               <Badge tone="accent">{active.footnote}</Badge>
             </div>
@@ -68,7 +70,7 @@ export function Services() {
         </div>
       </Section>
       <Section tone="sunken" style={{ padding: 'var(--space-16) var(--gutter)' }}>
-        <RevealGroup step={70} style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 'var(--space-5)' }}>
+        <RevealGroup step={70} className="g-3" style={{ gap: 'var(--space-5)' }}>
           {services.map((s) => (
             <Card key={s.id} variant="quiet" interactive padding="var(--space-6)" onClick={() => setTab(s.id)} style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start', height: '100%', borderColor: s.id === tab ? 'rgba(192,168,84,.38)' : undefined }}>
               <span style={{ color: 'var(--text-accent)', display: 'inline-flex', marginTop: 2 }}><Icon name={s.icon} size={18} /></span>
@@ -84,7 +86,7 @@ export function Services() {
         <Reveal variant="fade" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
           <SectionHeading level="h3" eyebrow="Frentes de apoio" title="Infraestrutura e manutenção de equipamentos" description="Não são o foco da BRAPRI. Entram no contrato quando o software precisa de um ambiente confiável — ou quando o cliente prefere um fornecedor único." />
         </Reveal>
-        <RevealGroup step={80} style={{ display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 'var(--space-5)' }}>
+        <RevealGroup step={80} className="g-3" style={{ gap: 'var(--space-5)' }}>
           {support.map((sv) => (
             <Card key={sv.id} variant="quiet" padding="var(--space-6)" style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
               <span style={{ color: 'var(--text-muted)', display: 'inline-flex' }}><Icon name={sv.icon} size={18} /></span>
