@@ -17,7 +17,8 @@ function CaseRow({ item, index }: { item: typeof cases[0]; index: number }) {
   return (
     <Reveal variant="rise" className="g-case-row" style={{ gap: 'var(--space-16)', alignItems: 'center' }}>
       <div className="brapri-photo" style={{ height: 360, order: flip ? 2 : 1, position: 'relative' }}>
-        <div className="photo-placeholder">{item.photoHint}</div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`https://picsum.photos/seed/${500 + index}/1600/1100`} alt={item.tag} />
       </div>
       <div style={{ order: flip ? 1 : 2, display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>

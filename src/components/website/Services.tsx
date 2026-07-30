@@ -51,7 +51,8 @@ export function Services() {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
             <div className="brapri-photo" style={{ height: 240, position: 'relative' }}>
-              <div className="photo-placeholder">Foto do time em desenvolvimento / tela do sistema (1600×1000)</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="https://picsum.photos/seed/400/1600/1000" alt="Time em desenvolvimento" />
             </div>
             <Card variant="elevated" padding="var(--space-8)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-accent)' }}>Incluído em todo contrato</span>

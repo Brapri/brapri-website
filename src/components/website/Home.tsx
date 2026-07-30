@@ -74,11 +74,8 @@ function Hero() {
 function PhotoBand() {
   return (
     <section className="photo-band" style={{ position: 'relative', height: 520, overflow: 'hidden', background: 'var(--ink-200)' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--ink-300)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)', textAlign: 'center' }}>
-          Solte aqui uma foto do time programando / tela de código (paisagem, 2400×1000)
-        </span>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="https://picsum.photos/seed/100/2400/1000" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       <div style={{ position: 'absolute', inset: 0, background: 'var(--scrim-bottom)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 'var(--space-16) var(--gutter)', pointerEvents: 'none' }}>
         <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto' }}>
@@ -157,7 +154,8 @@ function DevelopmentFocus() {
         </div>
         <Reveal variant="blur" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
           <div className="brapri-photo" style={{ height: 300, position: 'relative' }}>
-            <div className="photo-placeholder">Foto do time de desenvolvimento / estação de trabalho (1600×1000)</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://picsum.photos/seed/180/1600/1000" alt="Time de desenvolvimento" />
           </div>
           <Card variant="elevated" padding="var(--space-6)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-accent)' }}>Stack de trabalho</span>
@@ -242,7 +240,8 @@ function CasesTeaser() {
         {cases.map((c) => (
           <Card key={c.id} variant="default" interactive padding="0" onClick={() => router.push('/cases')} style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}>
             <div className="brapri-photo" style={{ height: 150, borderRadius: 0, border: 0, position: 'relative' }}>
-              <div className="photo-placeholder">{c.photoHint}</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`https://picsum.photos/seed/${200 + cases.indexOf(c)}/800/600`} alt={c.tag} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', padding: 'var(--space-6)' }}>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.tag}</span>

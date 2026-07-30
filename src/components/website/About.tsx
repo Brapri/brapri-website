@@ -34,10 +34,12 @@ export function About() {
       <Section style={{ padding: '0 var(--gutter) var(--space-16)' }}>
         <Reveal variant="blur" className="g-photos" style={{ gap: 'var(--space-5)' }}>
           <div className="brapri-photo" style={{ height: 380, position: 'relative' }}>
-            <div className="photo-placeholder">Foto da equipe de desenvolvimento (paisagem, 1800×1200)</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://picsum.photos/seed/300/1800/1200" alt="Equipe de desenvolvimento" />
           </div>
           <div className="brapri-photo" style={{ height: 380, position: 'relative' }}>
-            <div className="photo-placeholder">Foto de reunião de discovery com cliente (retrato, 1200×1500)</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://picsum.photos/seed/301/1200/1500" alt="Reunião com cliente" />
           </div>
         </Reveal>
       </Section>
