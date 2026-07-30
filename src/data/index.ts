@@ -129,6 +129,15 @@ export const cases = [
   },
 ];
 
+export const clients = [
+  { id: 'c1', name: 'Metálica Capixaba', sector: 'Indústria' },
+  { id: 'c2', name: 'Armazéns do Sul', sector: 'Logística' },
+  { id: 'c3', name: 'Rede Tropical', sector: 'Varejo' },
+  { id: 'c4', name: 'Grupo Vitória', sector: 'Serviços' },
+  { id: 'c5', name: 'Calçados Montanha', sector: 'Indústria' },
+  { id: 'c6', name: 'Transportes Costa', sector: 'Logística' },
+];
+
 export const stats = [
   { value: '2', suffix: 'sem', label: 'Ciclo de entrega em produção' },
   { value: '99,9', suffix: '%', label: 'Disponibilidade da aplicação' },

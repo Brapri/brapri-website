@@ -13,7 +13,7 @@ import { Tag } from '@/components/core/Tag';
 import { Icon } from '@/components/core/Icon';
 import { Eyebrow } from '@/components/brand/Eyebrow';
 import { GoldRule } from '@/components/brand/GoldRule';
-import { services, support, cases, stats, steps } from '@/data';
+import { services, support, cases, stats, steps, clients } from '@/data';
 
 function Hero() {
   const router = useRouter();
@@ -100,6 +100,26 @@ function StatsRow() {
           </Reveal>
         ))}
       </div>
+    </Section>
+  );
+}
+
+function TrustedBy() {
+  return (
+    <Section tone="sunken" style={{ padding: 'var(--space-12) var(--gutter)' }}>
+      <Reveal variant="fade">
+        <p style={{ margin: '0 0 var(--space-8)', textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-faint)' }}>
+          Empresas que confiam na BRAPRI
+        </p>
+      </Reveal>
+      <RevealGroup step={60} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 'var(--space-3)' }}>
+        {clients.map((c) => (
+          <div key={c.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, padding: 'var(--space-5) var(--space-8)', border: '1px solid var(--border-hairline)', borderRadius: 'var(--radius-md)', background: 'var(--surface-page)', minWidth: 160 }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'var(--text-body-lg)', letterSpacing: '0.02em', color: 'var(--text-muted)' }}>{c.name}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.sector}</span>
+          </div>
+        ))}
+      </RevealGroup>
     </Section>
   );
 }
@@ -306,6 +326,7 @@ export function Home() {
     <>
       <Hero />
       <Marquee />
+      <TrustedBy />
       <DevelopmentFocus />
       <PhotoBand />
       <StatsRow />
