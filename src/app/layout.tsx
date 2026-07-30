@@ -3,6 +3,7 @@ import { Sora, Manrope, Montserrat, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Footer } from '@/components/navigation/Footer';
+import { Providers } from './providers';
 import { company, nav, services } from '@/data';
 
 const sora = Sora({
@@ -70,11 +71,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${sora.variable} ${manrope.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
     >
       <body>
-        <div style={{ minHeight: '100%', background: 'var(--surface-page)' }}>
-          <Navbar items={nav} />
-          <main>{children}</main>
-          <Footer legal={legalText} columns={footerColumns} />
-        </div>
+        <Providers>
+          <div style={{ minHeight: '100%', background: 'var(--surface-page)' }}>
+            <Navbar items={nav} />
+            <main>{children}</main>
+            <Footer legal={legalText} columns={footerColumns} />
+          </div>
+        </Providers>
       </body>
     </html>
   );
