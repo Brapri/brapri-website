@@ -82,6 +82,24 @@ export const support = [
   },
 ];
 
+export const aprenderConectadoCase = {
+  id: 'aprender-conectado',
+  tag: 'Gov · Educação',
+  client: 'EACE · Aprender Conectado',
+  title: 'Infraestrutura de rede em escolas públicas do sul do ES',
+  summary: 'Projeto de cabeamento estruturado e redes sem fio para o Programa Aprender Conectado, com instalação em múltiplos municípios do Espírito Santo. Cada escola recebeu rede local estruturada, switch gerenciável e pontos de acesso Wi-Fi para suportar o laboratório de informática e conectividade em sala de aula.',
+  result: '5',
+  resultLabel: 'municípios atendidos',
+  stack: ['Cabeamento Cat6', 'Switch gerenciável', 'Wi-Fi 802.11ac', 'Rack e patch panel', 'Certificação de rede'],
+  municipalities: [
+    { name: 'Alfredo Chaves',          lat: -20.63, lon: -40.74 },
+    { name: 'Iconha',                  lat: -20.79, lon: -40.84 },
+    { name: 'Cachoeiro de Itapemirim', lat: -20.85, lon: -41.11 },
+    { name: 'Atílio Vivácqua',         lat: -20.91, lon: -41.19 },
+    { name: 'Mimoso do Sul',           lat: -21.06, lon: -41.36 },
+  ],
+};
+
 export const cases = [
   {
     id: 'industria',
