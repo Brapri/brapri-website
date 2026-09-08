@@ -15,8 +15,37 @@ import { Checkbox } from '@/components/forms/Checkbox';
 import { Reveal } from './Reveal';
 import { company, services } from '@/data';
 
+type Status = 'idle' | 'sending' | 'ok' | 'error';
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>('idle');
+  const [consent, setConsent] = useState(false);
+  const [fields, setFields] = useState({
+    nome: '', empresa: '', email: '', telefone: '',
+    segmento: 'Indústria', servico: services[0]?.title ?? '',
+    mensagem: '',
+  });
+
+  const set = (k: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setFields((f) => ({ ...f, [k]: e.target.value }));
+
+  const valid = fields.nome.trim() && fields.email.trim() && fields.mensagem.trim() && consent;
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!valid || status === 'sending') return;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(fields),
+      });
+      setStatus(res.ok ? 'ok' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
 
   const contactInfo = [
     ['mail', company.email],
@@ -45,37 +74,67 @@ export function Contact() {
             </span>
           </Card>
         </div>
+
         <Reveal variant="blur" delay={120} style={{ display: 'flex', minWidth: 0 }}>
           <Card variant="elevated" padding="var(--space-10)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', minWidth: 0, flex: 1 }}>
-            {sent && (
-              <Alert tone="success" title="Solicitação recebida">
+            {status === 'ok' && (
+              <Alert tone="success" title="Solicitação recebida!">
                 Responderemos em até 1 dia útil no e-mail informado.
               </Alert>
             )}
-            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
-              <Field style={{ minWidth: 0 }} label="Nome" required><Input placeholder="Seu nome" /></Field>
-              <Field style={{ minWidth: 0 }} label="Empresa" required><Input placeholder="Razão social" /></Field>
-            </div>
-            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
-              <Field style={{ minWidth: 0 }} label="E-mail corporativo" required><Input type="email" icon="mail" placeholder="nome@empresa.com.br" /></Field>
-              <Field style={{ minWidth: 0 }} label="Telefone"><Input icon="phone" placeholder="(28) 90000-0000" /></Field>
-            </div>
-            <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
-              <Field style={{ minWidth: 0 }} label="Segmento">
-                <Select options={['Indústria', 'Varejo', 'Logística', 'Serviços', 'Setor público', 'Outro']} />
-              </Field>
-              <Field style={{ minWidth: 0 }} label="Serviço de interesse">
-                <Select options={services.map((s) => s.title)} />
-              </Field>
-            </div>
-            <Field style={{ minWidth: 0 }} label="Como podemos ajudar?" hint="Ambiente atual, número de usuários e principal dor.">
-              <Textarea rows={4} placeholder="Descreva o desafio da sua operação" />
-            </Field>
-            <Checkbox label="Autorizo o contato e concordo com a Política de Privacidade." />
-            <Button fullWidth size="lg" iconRight="send" onClick={() => setSent(true)}>Enviar solicitação</Button>
-            <span style={{ fontSize: 'var(--text-caption)', color: 'var(--text-faint)', textAlign: 'center' }}>
-              Formulário de demonstração — nenhum dado é enviado.
-            </span>
+            {status === 'error' && (
+              <Alert tone="danger" title="Erro ao enviar">
+                Tente novamente ou fale direto pelo WhatsApp.
+              </Alert>
+            )}
+
+            {status !== 'ok' && (
+              <form onSubmit={submit} style={{ display: 'contents' }}>
+                <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
+                  <Field style={{ minWidth: 0 }} label="Nome" required>
+                    <Input placeholder="Seu nome" value={fields.nome} onChange={set('nome')} required />
+                  </Field>
+                  <Field style={{ minWidth: 0 }} label="Empresa">
+                    <Input placeholder="Razão social" value={fields.empresa} onChange={set('empresa')} />
+                  </Field>
+                </div>
+                <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
+                  <Field style={{ minWidth: 0 }} label="E-mail" required>
+                    <Input type="email" icon="mail" placeholder="nome@empresa.com.br" value={fields.email} onChange={set('email')} required />
+                  </Field>
+                  <Field style={{ minWidth: 0 }} label="Telefone">
+                    <Input icon="phone" placeholder="(28) 90000-0000" value={fields.telefone} onChange={set('telefone')} />
+                  </Field>
+                </div>
+                <div className="g-fields" style={{ gap: 'var(--space-5)', minWidth: 0 }}>
+                  <Field style={{ minWidth: 0 }} label="Segmento">
+                    <Select
+                      options={['Indústria', 'Varejo', 'Logística', 'Serviços', 'Setor público', 'Outro']}
+                      value={fields.segmento}
+                      onChange={set('segmento')}
+                    />
+                  </Field>
+                  <Field style={{ minWidth: 0 }} label="Serviço de interesse">
+                    <Select
+                      options={services.map((s) => s.title)}
+                      value={fields.servico}
+                      onChange={set('servico')}
+                    />
+                  </Field>
+                </div>
+                <Field style={{ minWidth: 0 }} label="Como podemos ajudar?" hint="Ambiente atual, número de usuários e principal dor." required>
+                  <Textarea rows={4} placeholder="Descreva o desafio da sua operação" value={fields.mensagem} onChange={set('mensagem')} required />
+                </Field>
+                <Checkbox
+                  label="Autorizo o contato e concordo com a Política de Privacidade."
+                  checked={consent}
+                  onChange={setConsent}
+                />
+                <Button fullWidth size="lg" iconRight="send" disabled={!valid || status === 'sending'}>
+                  {status === 'sending' ? 'Enviando…' : 'Enviar solicitação'}
+                </Button>
+              </form>
+            )}
           </Card>
         </Reveal>
       </div>
