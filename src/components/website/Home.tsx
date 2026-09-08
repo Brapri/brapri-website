@@ -306,6 +306,50 @@ function SupportServices() {
   );
 }
 
+const FAQ_ITEMS = [
+  { q: 'A BRAPRI implementa ERP?', a: 'Sim. Integramos com os principais ERPs do mercado via API e desenvolvemos módulos complementares sob medida para indústria, varejo e logística no Espírito Santo.' },
+  { q: 'O que é desenvolvimento sob demanda?', a: 'É o modelo em que o sistema é construído exatamente para o seu processo, sem custo de licença por usuário. Você paga pelo desenvolvimento e pela sustentação, não por uma solução genérica.' },
+  { q: 'Vocês oferecem suporte de TI no ES?', a: 'Sim, tanto remoto quanto presencial no sul do ES. Atendemos com SLA definido em contrato para os sistemas que desenvolvemos e para infraestrutura de terceiros.' },
+  { q: 'Atendem fora do Espírito Santo?', a: 'Sim. O atendimento remoto cobre todo o Brasil. Já entregamos projetos de automação e integração para clientes em outros estados sem necessidade de visita presencial.' },
+  { q: 'Quanto tempo leva para desenvolver um sistema?', a: 'Depende da complexidade. Módulos simples de automação saem em 2 a 4 semanas. Sistemas maiores são planejados em sprints de duas semanas, com entregas intermediárias para aceite.' },
+  { q: 'Como funciona a automação de processos?', a: 'Mapeamos o processo atual, identificamos gargalos e construímos robôs ou integrações que eliminam digitação dupla, planilhas e retrabalho. Usamos n8n, Python e APIs REST conforme cada caso.' },
+];
+
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <Section tone="sunken">
+      <div style={{ maxWidth: 760, margin: '0 auto' }}>
+        <Reveal variant="rise" style={{ marginBottom: 'var(--space-12)' }}>
+          <SectionHeading align="center" eyebrow="Dúvidas frequentes" title="Perguntas que chegam antes da proposta" style={{ alignItems: 'center', textAlign: 'center' }} />
+        </Reveal>
+        <div>
+          {FAQ_ITEMS.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} style={{ borderTop: '1px solid var(--border-hairline)' }}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-4)', padding: 'var(--space-5) 0', textAlign: 'left' }}
+                >
+                  <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-body-lg)', color: isOpen ? 'var(--text-accent)' : 'var(--text-heading)', transition: 'color var(--dur-fast) var(--ease-standard)' }}>{item.q}</span>
+                  <span style={{ flexShrink: 0, color: isOpen ? 'var(--text-accent)' : 'var(--text-faint)', display: 'inline-flex', transform: isOpen ? 'rotate(45deg)' : 'none', transition: 'transform var(--dur-base) var(--ease-out-soft), color var(--dur-fast) var(--ease-standard)' }}>
+                    <Icon name="plus" size={18} />
+                  </span>
+                </button>
+                <div style={{ maxHeight: isOpen ? 220 : 0, opacity: isOpen ? 1 : 0, overflow: 'hidden', transition: 'max-height var(--dur-slow) var(--ease-out-soft), opacity var(--dur-base) var(--ease-standard)' }}>
+                  <p style={{ margin: '0 0 var(--space-5)', maxWidth: '62ch', fontSize: 'var(--text-body-md)', lineHeight: 'var(--lh-body-md)', color: 'var(--text-muted)' }}>{item.a}</p>
+                </div>
+              </div>
+            );
+          })}
+          <div style={{ borderTop: '1px solid var(--border-hairline)' }} />
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 function CtaBand() {
   const router = useRouter();
   return (
@@ -338,6 +382,7 @@ export function Home() {
       <CasesTeaser />
       <Process />
       <SupportServices />
+      <FAQ />
       <CtaBand />
     </>
   );

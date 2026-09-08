@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Footer } from '@/components/navigation/Footer';
 import { Providers } from './providers';
+import { WhatsAppButton } from '@/components/core/WhatsAppButton';
 import { company, nav, services } from '@/data';
 
 const sora = Sora({
@@ -35,9 +36,37 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'BRAPRI Tecnologia — Software sob medida e automação',
-  description: 'A BRAPRI TECNOLOGIA desenvolve sistemas sob medida e automatiza processos para empresas que perderam tempo demais com planilha, digitação dupla e retrabalho.',
-  keywords: ['software sob medida', 'automação de processos', 'desenvolvimento de sistemas', 'integração ERP', 'Espírito Santo'],
+  metadataBase: new URL('https://brapri.com'),
+  title: {
+    default: 'BRAPRI Tecnologia — Software sob medida, ERP e automação no ES',
+    template: '%s — BRAPRI Tecnologia',
+  },
+  description: 'Software house no Espírito Santo. Desenvolvemos sistemas sob medida, integramos ERPs e automatizamos processos para indústria, varejo e logística. Suporte de TI remoto e presencial no sul do ES.',
+  keywords: [
+    'software sob medida Espírito Santo', 'desenvolvimento de sistemas ES', 'ERP Espírito Santo', 'integração ERP ES',
+    'automação de processos ES', 'suporte TI Espírito Santo', 'software house ES', 'desenvolvimento web ES',
+    'desenvolvimento sob demanda ES', 'sistema de gestão ES', 'TI para indústria ES', 'BRAPRI', 'Iconha ES',
+  ],
+  authors: [{ name: 'BRAPRI Tecnologia', url: 'https://brapri.com' }],
+  creator: 'BRAPRI Tecnologia',
+  publisher: 'BRAPRI Tecnologia',
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://brapri.com',
+    siteName: 'BRAPRI Tecnologia',
+    title: 'BRAPRI Tecnologia — Software sob medida, ERP e automação no ES',
+    description: 'Software house no Espírito Santo. Sistemas sob medida, integração de ERP, automação de processos e suporte de TI para indústria, varejo e logística.',
+    images: [{ url: '/assets/brapri-logo-stacked.png', width: 720, height: 720, alt: 'BRAPRI Tecnologia' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'BRAPRI Tecnologia — Software sob medida no ES',
+    description: 'Software house no Espírito Santo. Sistemas sob medida, ERP, automação e suporte de TI.',
+    images: ['/assets/brapri-logo-stacked.png'],
+  },
+  alternates: { canonical: 'https://brapri.com' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -71,11 +100,50 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${sora.variable} ${manrope.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
+            name: 'BRAPRI Tecnologia',
+            legalName: 'BRAPRI TECNOLOGIA LTDA',
+            url: 'https://brapri.com',
+            logo: 'https://brapri.com/assets/brapri-logo-stacked.png',
+            image: 'https://brapri.com/assets/brapri-logo-stacked.png',
+            description: 'Software house no Espírito Santo. Desenvolvemos sistemas sob medida, integramos ERPs e automatizamos processos para indústria, varejo e logística.',
+            email: company.email,
+            telephone: company.phone,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: "Área Rural 1, Pedra D'Água",
+              addressLocality: 'Iconha',
+              addressRegion: 'ES',
+              postalCode: '29280-000',
+              addressCountry: 'BR',
+            },
+            areaServed: [
+              { '@type': 'State', name: 'Espírito Santo' },
+              { '@type': 'Country', name: 'Brasil' },
+            ],
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+              opens: '08:00',
+              closes: '18:00',
+            },
+            knowsAbout: [
+              'Desenvolvimento de software sob medida', 'Automação de processos',
+              'Integração de ERP', 'Suporte de TI', 'Cloud computing',
+              'Desenvolvimento web', 'APIs e integrações',
+            ],
+          }) }}
+        />
         <Providers>
           <div style={{ minHeight: '100%', background: 'var(--surface-page)' }}>
             <Navbar items={nav} />
             <main>{children}</main>
             <Footer legal={legalText} columns={footerColumns} />
+            <WhatsAppButton />
           </div>
         </Providers>
       </body>
