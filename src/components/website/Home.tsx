@@ -254,7 +254,7 @@ function CasesTeaser() {
     <Section>
       <div className="section-hdr" style={{ gap: 'var(--space-10)', marginBottom: 'var(--space-12)' }}>
         <Reveal variant="rise">
-          <SectionHeading eyebrow="Cases" title="Resultado medido depois do go-live" description="Projetos de desenvolvimento e automação entregues para indústria, varejo, logística e serviços." />
+          <SectionHeading eyebrow="Cases" title="Resultado medido depois do go-live" description="Projetos reais entregues para indústria, creator economy, governo e setor associativo." />
         </Reveal>
         <Reveal variant="fade" delay={150}>
           <Button variant="ghost" iconRight="arrow-right" onClick={() => router.push('/cases')}>Ver todos os cases</Button>
@@ -262,21 +262,86 @@ function CasesTeaser() {
       </div>
       <RevealGroup step={90} className="g-4-1" style={{ gap: 'var(--space-5)' }}>
         {cases.map((c) => (
-          <Card key={c.id} variant="default" interactive padding="0" onClick={() => router.push('/cases')} style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}>
+          <Card key={c.id} variant="default" interactive padding="0" onClick={() => router.push(`/cases/${c.id}`)} style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}>
             <div className="brapri-photo" style={{ height: 150, borderRadius: 0, border: 0, position: 'relative' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`https://picsum.photos/seed/${200 + cases.indexOf(c)}/800/600`} alt={c.tag} />
+              <img src={c.imageUrl ?? `https://picsum.photos/seed/${200 + cases.indexOf(c)}/800/600`} alt={c.tag} style={{ objectPosition: 'top' }} />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', padding: 'var(--space-6)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', padding: 'var(--space-6)', flex: 1 }}>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-accent)' }}>{c.tag}</span>
               <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-body-lg)', lineHeight: 1.35, color: 'var(--text-heading)' }}>{c.title}</h3>
-              <span style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 'auto', minWidth: 0, fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-h3)', color: 'var(--text-heading)' }}>
+              <span style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 'auto', paddingTop: 'var(--space-3)', minWidth: 0, fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-h3)', color: 'var(--text-heading)' }}>
                 {c.result}<span style={{ minWidth: 0, fontFamily: 'var(--font-body)', fontSize: 'var(--text-caption)', fontWeight: 500, lineHeight: 1.4, color: 'var(--text-muted)' }}>{c.resultLabel}</span>
               </span>
             </div>
           </Card>
         ))}
       </RevealGroup>
+    </Section>
+  );
+}
+
+function PainPoints() {
+  const router = useRouter();
+  const problems = [
+    {
+      icon: 'file-spreadsheet',
+      before: 'Cada área tem a sua planilha.',
+      after: 'Um sistema integrado onde todos enxergam o mesmo dado em tempo real.',
+      label: 'Planilha como sistema',
+    },
+    {
+      icon: 'copy',
+      before: 'A mesma informação digitada em dois sistemas.',
+      after: 'Integrações que transferem dados automaticamente entre ERP, e-commerce e emissor fiscal.',
+      label: 'Digitação dupla',
+    },
+    {
+      icon: 'eye-off',
+      before: 'Ninguém sabe o status de um pedido, proposta ou processo.',
+      after: 'Painel em tempo real com rastreabilidade de ponta a ponta.',
+      label: 'Falta de visibilidade',
+    },
+    {
+      icon: 'clock',
+      before: 'Relatórios feitos na mão toda semana.',
+      after: 'Indicadores gerados automaticamente, sempre atualizados.',
+      label: 'Retrabalho manual',
+    },
+  ] as const;
+
+  return (
+    <Section tone="veil">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)' }}>
+        <Reveal variant="rise">
+          <SectionHeading
+            align="center"
+            eyebrow="Se isso soa familiar"
+            title="Esses problemas têm solução"
+            description="Não é falta de dedicação da equipe. É falta de sistema certo para o processo certo."
+            style={{ alignItems: 'center', textAlign: 'center' }}
+          />
+        </Reveal>
+        <RevealGroup step={80} className="g-4" style={{ gap: 'var(--space-5)' }}>
+          {problems.map((p) => (
+            <Card key={p.label} variant="quiet" padding="var(--space-6)" interactive style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', height: '100%' }}>
+              <span style={{ display: 'inline-flex', color: 'var(--text-accent)' }}><Icon name={p.icon} size={20} /></span>
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-body-lg)', color: 'var(--text-heading)' }}>{p.label}</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: 1 }}>
+                <p style={{ margin: 0, fontSize: 'var(--text-body-sm)', lineHeight: 1.6, color: 'var(--text-muted)', paddingLeft: 'var(--space-3)', borderLeft: '2px solid rgba(200,60,60,0.4)' }}>
+                  {p.before}
+                </p>
+                <p style={{ margin: 0, fontSize: 'var(--text-body-sm)', lineHeight: 1.6, color: 'var(--text-muted)', paddingLeft: 'var(--space-3)', borderLeft: '2px solid rgba(60,180,100,0.5)' }}>
+                  {p.after}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </RevealGroup>
+        <Reveal variant="fade" style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button variant="secondary" iconRight="arrow-right" onClick={() => router.push('/contato')}>Falar sobre meu processo</Button>
+        </Reveal>
+      </div>
     </Section>
   );
 }
@@ -375,6 +440,7 @@ export function Home() {
       <Hero />
       <Marquee />
       <TrustedBy />
+      <PainPoints />
       <DevelopmentFocus />
       <PhotoBand />
       <StatsRow />

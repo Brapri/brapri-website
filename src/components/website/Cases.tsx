@@ -145,6 +145,7 @@ function ESMap({ municipalities }: { municipalities: typeof aprenderConectadoCas
 
 // ─── Case Aprender Conectado ──────────────────────────────────────────────────
 function CaseAprenderConectado() {
+  const router = useRouter();
   const c = aprenderConectadoCase;
   return (
     <Reveal variant="rise">
@@ -159,7 +160,10 @@ function CaseAprenderConectado() {
         <div className="g-case-row" style={{ gap: 'var(--space-16)', alignItems: 'start' }}>
           {/* Texto */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-            <h3 style={{ margin: 0, maxWidth: '28ch', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)' }}>
+            <h3
+              style={{ margin: 0, maxWidth: '28ch', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)', cursor: 'pointer' }}
+              onClick={() => router.push(`/cases/${c.id}`)}
+            >
               {c.title}
             </h3>
             <p style={{ margin: 0, maxWidth: '52ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' as never }}>
@@ -190,14 +194,15 @@ function CaseAprenderConectado() {
               </div>
             </div>
 
-            {/* Client */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', paddingTop: 'var(--space-2)' }}>
+            {/* Client + CTA */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)', paddingTop: 'var(--space-2)' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://651818aeb03babcd9aeedc490daec497.cdn.bubble.io/cdn-cgi/image/w=192,h=48,f=auto,dpr=2.5,fit=contain/f1745331952171x308140294008352200/LOGO_APRENDER_CONECTADO_CMYK-.png"
                 alt="Aprender Conectado"
                 style={{ height: 28, width: 'auto', maxWidth: 160, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.55 }}
               />
+              <Button size="sm" variant="secondary" iconRight="arrow-right" onClick={() => router.push(`/cases/${c.id}`)}>Ver detalhes</Button>
             </div>
           </div>
 
@@ -225,11 +230,16 @@ function CaseAprenderConectado() {
 
 // ─── Case genérico ────────────────────────────────────────────────────────────
 function CaseRow({ item, index }: { item: typeof cases[0]; index: number }) {
+  const router = useRouter();
   const flip = index % 2 === 1;
   const imgSrc = item.imageUrl ?? `https://picsum.photos/seed/${500 + index}/1600/1100`;
   return (
     <Reveal variant="rise" className="g-case-row" style={{ gap: 'var(--space-16)', alignItems: 'center' }}>
-      <div className="brapri-photo" style={{ height: 360, order: flip ? 2 : 1, position: 'relative' }}>
+      <div
+        className="brapri-photo"
+        style={{ height: 360, order: flip ? 2 : 1, position: 'relative', cursor: 'pointer' }}
+        onClick={() => router.push(`/cases/${item.id}`)}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={imgSrc} alt={item.tag} />
       </div>
@@ -238,11 +248,18 @@ function CaseRow({ item, index }: { item: typeof cases[0]; index: number }) {
           <Badge tone="accent">{item.tag}</Badge>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)' }}>CASE {String(index + 2).padStart(2, '0')}</span>
         </div>
-        <h3 style={{ margin: 0, maxWidth: '26ch', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)' }}>{item.title}</h3>
+        <h3
+          style={{ margin: 0, maxWidth: '26ch', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 'var(--lh-h2)', letterSpacing: 'var(--ls-h2)', color: 'var(--text-heading)', cursor: 'pointer' }}
+          onClick={() => router.push(`/cases/${item.id}`)}
+        >
+          {item.title}
+        </h3>
         <p style={{ margin: 0, maxWidth: '52ch', fontSize: 'var(--text-body-lg)', lineHeight: 1.65, color: 'var(--text-muted)', textWrap: 'pretty' as never }}>{item.summary}</p>
         <GoldRule />
         <StatBlock value={item.result} label={item.resultLabel} />
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>{item.stack.map((t) => <Tag key={t}>{t}</Tag>)}</div>
+        <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center', marginTop: 'var(--space-2)' }}>
+          <Button size="sm" variant="secondary" iconRight="arrow-right" onClick={() => router.push(`/cases/${item.id}`)}>Ver detalhes</Button>
+        </div>
       </div>
     </Reveal>
   );
