@@ -24,7 +24,7 @@ function Hero() {
       <div className="brapri-scanline" style={{ top: 0 }} />
       <div className="g-hero" style={{ position: 'relative', maxWidth: 'var(--content-max)', margin: '0 auto', gap: 'var(--space-16)', alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-          <Reveal variant="fade"><Eyebrow>Software e automação · Espírito Santo</Eyebrow></Reveal>
+          <Reveal variant="fade"><Eyebrow>Software e automação · Iconha, ES</Eyebrow></Reveal>
           <h1 style={{ margin: 0, maxWidth: '20ch', fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-hero)', lineHeight: 'var(--lh-hero)', letterSpacing: 'var(--ls-hero)', color: 'var(--text-heading)' }}>
             <RevealWords text="Software que trabalha por você." accentFrom={1} accentStyle={{ fontWeight: 600, color: 'var(--text-accent)' }} />
           </h1>

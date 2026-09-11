@@ -17,8 +17,8 @@ export function About() {
           <SectionHeading
             level="h1"
             eyebrow="Empresa"
-            title="Uma software house do interior do Espírito Santo"
-            description="A BRAPRI TECNOLOGIA LTDA desenvolve sistemas e automatiza processos para empresas de indústria, varejo e logística — com equipe própria de desenvolvimento e atendimento remoto e presencial."
+            title="Software house em Iconha, Espírito Santo"
+            description="A BRAPRI TECNOLOGIA LTDA desenvolve sistemas sob medida e automatiza processos para empresas de indústria, varejo e logística — com equipe própria de desenvolvimento, atendimento presencial no sul do ES e remoto em todo o Brasil."
           />
           <Card variant="glass" padding="var(--space-8)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', alignItems: 'flex-start' }}>
             <Logo height={110} />
@@ -57,6 +57,22 @@ export function About() {
             </Card>
           ))}
         </RevealGroup>
+      </Section>
+      <Section style={{ padding: '0 var(--gutter) var(--space-16)' }}>
+        <Reveal variant="rise">
+          <Card padding="var(--space-8)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
+            <Eyebrow>Área de atuação</Eyebrow>
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', lineHeight: 'var(--lh-h3)', letterSpacing: 'var(--ls-h3)', color: 'var(--text-heading)' }}>
+              Sul do Espírito Santo e todo o Brasil
+            </h2>
+            <p style={{ margin: 0, maxWidth: '72ch', fontSize: 'var(--text-body-md)', lineHeight: 'var(--lh-body-md)', color: 'var(--text-muted)' }}>
+              Com sede em <strong style={{ color: 'var(--text-body)' }}>Iconha, ES</strong>, a BRAPRI atende presencialmente os municípios do sul do Espírito Santo —
+              incluindo <strong style={{ color: 'var(--text-body)' }}>Cachoeiro de Itapemirim</strong>, Marataízes, Presidente Kennedy, Itapemirim,
+              Piúma, Anchieta, Alfredo Chaves, Rio Novo do Sul, Atílio Vivácqua, Mimoso do Sul, Guaçuí, Alegre e toda a região.
+              Projetos de desenvolvimento de software, automação e integração de ERP são entregues remotamente para clientes em qualquer estado do Brasil.
+            </p>
+          </Card>
+        </Reveal>
       </Section>
       <Section tone="sunken" style={{ padding: 'var(--space-16) var(--gutter)' }}>
         <Eyebrow>Compromissos de entrega</Eyebrow>

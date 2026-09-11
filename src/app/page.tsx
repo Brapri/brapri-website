@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import { Home } from '@/components/website/Home';
 
 export const metadata: Metadata = {
-  title: 'Software sob medida, ERP e automação no Espírito Santo',
-  description: 'A BRAPRI desenvolve sistemas sob medida, integra ERPs e automatiza processos para indústria, varejo e logística no ES. Suporte de TI remoto e presencial. Solicite uma proposta.',
+  title: 'Software sob medida em Iconha, ES — ERP e automação no Espírito Santo',
+  description: 'A BRAPRI Tecnologia, em Iconha/ES, desenvolve sistemas sob medida, integra ERPs e automatiza processos para indústria, varejo e logística. Atendimento presencial no sul do ES e remoto no Brasil.',
   keywords: [
+    'empresa de sistema Iconha', 'empresa de TI Iconha ES', 'software sob medida Iconha',
     'ERP Espírito Santo', 'ERP ES', 'desenvolvimento sob demanda ES', 'suporte TI ES',
     'software sob medida ES', 'automação de processos ES', 'integração ERP ES',
     'sistema de gestão ES', 'software house Iconha', 'TI para indústria ES',
+    'empresa de tecnologia sul do ES',
   ],
   alternates: { canonical: 'https://brapri.com' },
 };
