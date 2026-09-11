@@ -1,12 +1,13 @@
 import { About } from '@/components/website/About';
 
 export const metadata = {
-  title: 'BRAPRI — Empresa de Software em Iconha, ES',
-  description: 'Software house em Iconha, Espírito Santo. BRAPRI Tecnologia desenvolve sistemas sob medida, integra ERPs e automatiza processos para o sul do ES e todo o Brasil. Atendimento presencial e remoto.',
+  title: 'BRAPRI — Ecossistema de TI em Iconha, ES',
+  description: 'A BRAPRI Tecnologia oferece ERP na nuvem, desenvolvimento de sistemas, hardware gerenciado, VoIP corporativo e assessoria de TI para empresas do sul do ES e todo o Brasil. Cada solução contratada de forma independente.',
   keywords: [
-    'empresa de software Iconha', 'empresa de TI Iconha ES', 'software house Iconha ES',
-    'BRAPRI Tecnologia', 'TI sul do ES', 'empresa de sistema Iconha',
-    'desenvolvimento sob demanda Espírito Santo', 'empresa de tecnologia Cachoeiro',
+    'empresa de TI Iconha ES', 'empresa de sistema Iconha', 'software house Iconha ES',
+    'ERP pequenas empresas ES', 'aluguel de computadores ES', 'VoIP PABX nuvem ES',
+    'assessoria de TI ES', 'suporte de TI Cachoeiro de Itapemirim',
+    'BRAPRI Tecnologia', 'ecossistema TI sul do ES',
   ],
   alternates: { canonical: 'https://brapri.com/empresa' },
 };
