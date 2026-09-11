@@ -191,6 +191,137 @@ function DevelopmentFocus() {
   );
 }
 
+function ErpProduct() {
+  const router = useRouter();
+
+  const features = [
+    { icon: 'file-text', title: 'NFe ilimitada', body: 'Emita NFe, NFCe, NFS-e e MDF-e sem custo adicional por nota. Integrado à SEFAZ em tempo real.' },
+    { icon: 'cloud', title: '100% na nuvem', body: 'Sem instalação. Acesse pelo navegador ou pelo app (Android e iOS) de qualquer lugar.' },
+    { icon: 'layout-dashboard', title: 'Gestão completa', body: 'Estoque, compras, vendas, financeiro, ordem de serviço e PDV — tudo em um único painel.' },
+    { icon: 'building-2', title: 'Multiempresa', body: 'Filiais e CNPJs diferentes gerenciados com um único login. Visão consolidada e por unidade.' },
+  ] as const;
+
+  const plans = [
+    {
+      name: 'Básico NFe',
+      price: '49',
+      users: '1 usuário',
+      highlight: false,
+      items: ['NFe / NFCe / SAT ilimitado', 'Exportar XML', 'Relatórios e gráficos', 'Backup e SSL'],
+    },
+    {
+      name: 'Intermediário',
+      price: '89',
+      users: '3 usuários',
+      highlight: true,
+      items: ['Tudo do Básico', 'Controle de estoque', 'Vendas e compras', 'Financeiro completo', 'Ordem de serviço', 'Emissão de boletos'],
+    },
+    {
+      name: 'Gerencial',
+      price: '129',
+      users: '5 usuários',
+      highlight: false,
+      items: ['Tudo do Intermediário', 'Controle gerencial', 'Suporte técnico incluído'],
+    },
+  ];
+
+  return (
+    <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--surface-page)', borderTop: '1px solid var(--border-hairline)', borderBottom: '1px solid var(--border-hairline)' }}>
+      {/* Background glow */}
+      <div style={{ position: 'absolute', top: '-20%', right: '-10%', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(192,168,84,.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--section-y) var(--gutter)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
+
+        {/* Header */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', maxWidth: '58ch' }}>
+          <Reveal variant="fade">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ padding: '3px 10px', borderRadius: 999, background: 'rgba(192,168,84,0.12)', border: '1px solid rgba(192,168,84,0.3)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase' as never, color: 'var(--text-accent)' }}>
+                ERP na nuvem
+              </span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)' }}>para pequenas e médias empresas</span>
+            </div>
+          </Reveal>
+          <Reveal variant="rise">
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h1)', lineHeight: 'var(--lh-h1)', letterSpacing: 'var(--ls-h1)', color: 'var(--text-heading)' }}>
+              Sua empresa no controle.<br />
+              <span style={{ fontWeight: 300 }}>Sem complicação.</span>
+            </h2>
+          </Reveal>
+          <Reveal variant="rise" delay={120}>
+            <p style={{ margin: 0, fontSize: 'var(--text-lead)', lineHeight: 'var(--lh-lead)', color: 'var(--text-muted)' }}>
+              Vendas, estoque, financeiro e notas fiscais ilimitadas em um único sistema na nuvem. A BRAPRI implementa, configura e oferece suporte local em todo o sul do ES.
+            </p>
+          </Reveal>
+          <Reveal variant="fade" delay={200}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
+              {(['15 dias grátis', 'Sem instalação', 'Sem cartão de crédito'] as const).map((b) => (
+                <Badge key={b} tone="success" dot>{b}</Badge>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Features */}
+        <RevealGroup step={80} className="g-4" style={{ gap: 'var(--space-5)' }}>
+          {features.map((f) => (
+            <Card key={f.title} variant="quiet" padding="var(--space-6)" interactive style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+              <span style={{ display: 'inline-flex', color: 'var(--text-accent)' }}><Icon name={f.icon} size={20} /></span>
+              <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-body-lg)', color: 'var(--text-heading)' }}>{f.title}</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-body-sm)', lineHeight: 1.6, color: 'var(--text-muted)' }}>{f.body}</p>
+            </Card>
+          ))}
+        </RevealGroup>
+
+        {/* Plans */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+          <Reveal variant="rise">
+            <h3 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', letterSpacing: 'var(--ls-h3)', color: 'var(--text-heading)' }}>
+              Planos mensais
+            </h3>
+          </Reveal>
+          <RevealGroup step={90} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-5)' }}>
+            {plans.map((p) => (
+              <div key={p.name} style={{ position: 'relative', padding: 'var(--space-7)', borderRadius: 'var(--radius-md)', border: p.highlight ? '1px solid rgba(192,168,84,0.5)' : '1px solid var(--border-hairline)', background: p.highlight ? 'linear-gradient(135deg, rgba(192,168,84,.08) 0%, var(--surface-card) 100%)' : 'var(--surface-card)', display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
+                {p.highlight && (
+                  <span style={{ position: 'absolute', top: -12, left: 'var(--space-6)', padding: '2px 10px', borderRadius: 999, background: 'var(--accent)', color: 'var(--ink-900)', fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' as never }}>Mais popular</span>
+                )}
+                <div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-body-lg)', color: 'var(--text-heading)', marginBottom: 4 }}>{p.name}</div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'var(--text-h1)', color: p.highlight ? 'var(--text-accent)' : 'var(--text-heading)' }}>R$&nbsp;{p.price}</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)' }}>/mês</span>
+                  </div>
+                  <div style={{ marginTop: 4, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', color: 'var(--text-faint)' }}>{p.users}</div>
+                </div>
+                <div style={{ height: 1, background: 'var(--border-hairline)' }} />
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: 1 }}>
+                  {p.items.map((item) => (
+                    <li key={item} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 'var(--text-body-sm)', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                      <span style={{ flexShrink: 0, marginTop: 2, color: '#3FA97A' }}>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </RevealGroup>
+        </div>
+
+        {/* CTAs */}
+        <Reveal variant="rise">
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-4)' }}>
+            <Button size="lg" iconRight="arrow-right" onClick={() => router.push('/contato')}>Falar com a BRAPRI</Button>
+            <Button size="lg" variant="secondary" onClick={() => window.open('https://www.beijaflorerp.com.br/nova-conta', '_blank')}>Experimentar grátis por 15 dias</Button>
+          </div>
+        </Reveal>
+
+      </div>
+    </section>
+  );
+}
+
 function ServicesGrid() {
   const router = useRouter();
   return (
@@ -445,6 +576,7 @@ export function Home() {
       <PhotoBand />
       <StatsRow />
       <ServicesGrid />
+      <ErpProduct />
       <CasesTeaser />
       <Process />
       <SupportServices />
