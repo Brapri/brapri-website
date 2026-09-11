@@ -24,26 +24,26 @@ function Hero() {
       <div className="brapri-scanline" style={{ top: 0 }} />
       <div className="g-hero" style={{ position: 'relative', maxWidth: 'var(--content-max)', margin: '0 auto', gap: 'var(--space-16)', alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-          <Reveal variant="fade"><Eyebrow>Software e automação · Iconha, ES</Eyebrow></Reveal>
-          <h1 style={{ margin: 0, maxWidth: '20ch', fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-hero)', lineHeight: 'var(--lh-hero)', letterSpacing: 'var(--ls-hero)', color: 'var(--text-heading)' }}>
-            <RevealWords text="Software que trabalha por você." accentFrom={1} accentStyle={{ fontWeight: 600, color: 'var(--text-accent)' }} />
+          <Reveal variant="fade"><Eyebrow>Ecossistema de TI · Iconha, ES</Eyebrow></Reveal>
+          <h1 style={{ margin: 0, maxWidth: '22ch', fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-hero)', lineHeight: 'var(--lh-hero)', letterSpacing: 'var(--ls-hero)', color: 'var(--text-heading)' }}>
+            <RevealWords text="Tecnologia que resolve. Do ERP ao código sob medida." accentFrom={3} accentStyle={{ fontWeight: 600, color: 'var(--text-accent)' }} />
           </h1>
           <Reveal variant="draw" style={{ width: 220 }}><GoldRule /></Reveal>
           <Reveal variant="rise" delay={160}>
             <p style={{ margin: 0, maxWidth: '52ch', fontSize: 'var(--text-lead)', lineHeight: 'var(--lh-lead)', color: 'var(--text-muted)', textWrap: 'pretty' as never }}>
-              A BRAPRI TECNOLOGIA desenvolve sistemas sob medida e automatiza processos para empresas que perderam tempo demais com planilha, digitação dupla e retrabalho.
+              A BRAPRI é um ecossistema de soluções de TI: ERP na nuvem, desenvolvimento sob medida, hardware gerenciado, VoIP corporativo e assessoria de infraestrutura. Contrate o que precisa agora e combine quando fizer sentido.
             </p>
           </Reveal>
           <Reveal variant="rise" delay={260}>
             <div className="hero-btns">
-              <Button size="lg" iconRight="arrow-right" onClick={() => router.push('/contato')}>Solicitar proposta</Button>
-              <Button size="lg" variant="secondary" onClick={() => router.push('/servicos')}>Ver serviços</Button>
+              <Button size="lg" iconRight="arrow-right" onClick={() => router.push('/contato')}>Falar com a BRAPRI</Button>
+              <Button size="lg" variant="secondary" onClick={() => { const el = document.getElementById('ecossistema'); el?.scrollIntoView({ behavior: 'smooth' }); }}>Ver as soluções</Button>
             </div>
           </Reveal>
           <Reveal variant="fade" delay={380}>
             <div className="hero-badges">
-              <Badge tone="success" dot>Entrega a cada 2 semanas</Badge>
-              <Badge tone="accent" icon="workflow">Automação de processos</Badge>
+              <Badge tone="success" dot>5 soluções independentes</Badge>
+              <Badge tone="accent" icon="map-pin">Sul do ES e todo o Brasil</Badge>
             </div>
           </Reveal>
         </div>
@@ -75,13 +75,14 @@ function PhotoBand() {
   return (
     <section className="photo-band" style={{ position: 'relative', height: 520, overflow: 'hidden', background: 'var(--ink-200)' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="https://picsum.photos/seed/100/2400/1000" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'var(--scrim-bottom)', pointerEvents: 'none' }} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=2400&h=1000&auto=format&fit=crop&q=80" alt="Equipe de tecnologia" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,7,15,.95) 0%, rgba(5,7,15,.55) 55%, rgba(5,7,15,.2) 100%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 'var(--space-16) var(--gutter)', pointerEvents: 'none' }}>
         <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto' }}>
           <Reveal variant="rise">
             <h2 style={{ margin: 0, maxWidth: '26ch', fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'var(--text-h1)', lineHeight: 'var(--lh-h1)', letterSpacing: 'var(--ls-h1)', color: '#fff' }}>
-              Equipe própria, do discovery ao deploy.
+              Equipe própria. Um ecossistema completo.
             </h2>
           </Reveal>
         </div>
@@ -179,7 +180,8 @@ function DevelopmentFocus() {
         <Reveal variant="blur" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
           <div className="brapri-photo" style={{ height: 300, position: 'relative' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://picsum.photos/seed/180/1600/1000" alt="Time de desenvolvimento" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&h=1000&auto=format&fit=crop&q=80" alt="Desenvolvimento de software" />
           </div>
           <Card variant="elevated" padding="var(--space-6)" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-eyebrow)', fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-accent)' }}>Stack de trabalho</span>
@@ -412,6 +414,161 @@ function CasesTeaser() {
   );
 }
 
+function Ecossistema() {
+  const router = useRouter();
+
+  const products = [
+    {
+      id: 'dev',
+      icon: 'code-2' as const,
+      brand: 'BRAPRI Software & Dev',
+      pitch: 'Sistemas sob medida, automações e APIs para eliminar planilha, retrabalho e digitação dupla.',
+      model: 'Por projeto + sustentação mensal',
+      imgUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=480&auto=format&fit=crop&q=80',
+      cta: 'Discutir um projeto',
+      action: () => router.push('/contato'),
+    },
+    {
+      id: 'erp',
+      icon: 'layout-dashboard' as const,
+      brand: 'BRAPRI ERP',
+      pitch: 'Vendas, estoque, financeiro e NFe ilimitada na nuvem. Pronto para usar, sem instalação.',
+      model: 'Assinatura SaaS · a partir de R$49/mês',
+      imgUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=480&auto=format&fit=crop&q=80',
+      cta: 'Conhecer o ERP',
+      action: () => router.push('/contato'),
+    },
+    {
+      id: 'haas',
+      icon: 'monitor' as const,
+      brand: 'BRAPRI HaaS',
+      pitch: 'Desktops, notebooks, servidores e roteadores alugados e gerenciados. Hardware sem imobilizar capital.',
+      model: 'Mensalidade por equipamento',
+      imgUrl: 'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=800&h=480&auto=format&fit=crop&q=80',
+      cta: 'Consultar equipamentos',
+      action: () => router.push('/contato'),
+    },
+    {
+      id: 'telecom',
+      icon: 'phone' as const,
+      brand: 'BRAPRI Telecom',
+      pitch: 'PABX na nuvem, ramais móveis e gravação de chamadas. Comunicação corporativa sem central física.',
+      model: 'Mensalidade por ramal/usuário',
+      imgUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&h=480&auto=format&fit=crop&q=80',
+      cta: 'Solicitar demonstração',
+      action: () => router.push('/contato'),
+    },
+    {
+      id: 'assessoria',
+      icon: 'shield-check' as const,
+      brand: 'BRAPRI Assessoria & Infra',
+      pitch: 'Suporte de TI, gestão de rede, monitoramento e service desk. Sua TI gerenciada por quem entende.',
+      model: 'Contrato mensal MSP',
+      imgUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=480&auto=format&fit=crop&q=80',
+      cta: 'Falar com especialista',
+      action: () => router.push('/contato'),
+    },
+  ];
+
+  const crossSell = [
+    { trigger: 'Alugou equipamentos', gap: 'Precisa de suporte e monitoramento', solution: 'Assessoria & Infra' },
+    { trigger: 'Tem assessoria de TI', gap: 'ERP antigo trava a operação', solution: 'BRAPRI ERP ou Dev' },
+    { trigger: 'Implantou o ERP', gap: 'Quer integrar com a telefonia', solution: 'BRAPRI Telecom' },
+  ];
+
+  return (
+    <section id="ecossistema" style={{ background: 'var(--surface-sunken)', borderTop: '1px solid var(--border-hairline)', borderBottom: '1px solid var(--border-hairline)' }}>
+      <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--section-y) var(--gutter)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)' }}>
+
+        {/* Header */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', maxWidth: '64ch' }}>
+          <Reveal variant="fade"><Eyebrow>Ecossistema de Soluções de TI</Eyebrow></Reveal>
+          <Reveal variant="rise">
+            <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h1)', lineHeight: 'var(--lh-h1)', letterSpacing: 'var(--ls-h1)', color: 'var(--text-heading)' }}>
+              Contrate o que precisa.<br /><span style={{ fontWeight: 300 }}>Combine quando fizer sentido.</span>
+            </h2>
+          </Reveal>
+          <Reveal variant="rise" delay={120}>
+            <p style={{ margin: 0, fontSize: 'var(--text-lead)', lineHeight: 'var(--lh-lead)', color: 'var(--text-muted)' }}>
+              Você não precisa mudar toda a sua TI de uma vez. Cada solução BRAPRI funciona de forma independente — e quando você combina mais de uma, a gente integra tudo.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* Product cards */}
+        <RevealGroup step={70} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-5)' }}>
+          {products.map((p) => (
+            <div
+              key={p.id}
+              style={{ borderRadius: 'var(--radius-md)', border: '1px solid var(--border-hairline)', background: 'var(--surface-card)', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer', transition: 'border-color var(--dur-fast) var(--ease-standard)', }}
+              onClick={p.action}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(192,168,84,0.4)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border-hairline)'; }}
+            >
+              {/* Photo */}
+              <div style={{ height: 170, overflow: 'hidden', position: 'relative' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.imgUrl}
+                  alt={p.brand}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', display: 'block' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,7,15,.7) 0%, transparent 50%)' }} />
+                <span style={{ position: 'absolute', bottom: 10, left: 12, padding: '2px 8px', borderRadius: 999, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)', fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(192,168,84,.9)', letterSpacing: '0.1em', textTransform: 'uppercase' as never, border: '1px solid rgba(192,168,84,0.25)' }}>
+                  {p.model}
+                </span>
+              </div>
+              {/* Content */}
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', padding: 'var(--space-5)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ display: 'inline-flex', color: 'var(--text-accent)' }}><Icon name={p.icon} size={16} /></span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'var(--text-body-md)', color: 'var(--text-heading)' }}>{p.brand}</span>
+                </div>
+                <p style={{ margin: 0, fontSize: 'var(--text-body-sm)', lineHeight: 1.6, color: 'var(--text-muted)', flex: 1 }}>{p.pitch}</p>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 'var(--space-2)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body-sm)', fontWeight: 600, color: 'var(--text-accent)' }}>
+                  {p.cta}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </span>
+              </div>
+            </div>
+          ))}
+        </RevealGroup>
+
+        {/* Cross-sell strip */}
+        <Reveal variant="rise">
+          <Card variant="glass" padding="var(--space-8)">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h4)', letterSpacing: 'var(--ls-h4)', color: 'var(--text-heading)' }}>
+                  Um produto abre a porta para o próximo
+                </span>
+                <p style={{ margin: 0, fontSize: 'var(--text-body-sm)', color: 'var(--text-muted)' }}>
+                  Clientes que combinam soluções BRAPRI conseguem integrar tudo — o ERP conversando com o VoIP, o hardware suportado pela nossa equipe, e o dev que automatiza o que os dois juntos ainda não resolvem.
+                </p>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                {crossSell.map((cs, i) => (
+                  <div key={i} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--space-3)', fontSize: 'var(--text-body-sm)' }}>
+                    <span style={{ padding: '3px 10px', borderRadius: 999, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>{cs.trigger}</span>
+                    <span style={{ color: 'var(--text-faint)' }}>→</span>
+                    <span style={{ color: 'var(--text-muted)' }}>{cs.gap}</span>
+                    <span style={{ color: 'var(--text-faint)' }}>→</span>
+                    <span style={{ padding: '3px 10px', borderRadius: 999, background: 'rgba(192,168,84,0.1)', border: '1px solid rgba(192,168,84,0.3)', color: 'var(--text-accent)', fontWeight: 600 }}>{cs.solution}</span>
+                  </div>
+                ))}
+              </div>
+              <Button variant="secondary" iconRight="arrow-right" onClick={() => router.push('/contato')} style={{ alignSelf: 'flex-start' }}>
+                Montar meu pacote de TI
+              </Button>
+            </div>
+          </Card>
+        </Reveal>
+
+      </div>
+    </section>
+  );
+}
+
 function PainPoints() {
   const router = useRouter();
   const problems = [
@@ -571,15 +728,14 @@ export function Home() {
       <Hero />
       <Marquee />
       <TrustedBy />
+      <Ecossistema />
       <PainPoints />
       <DevelopmentFocus />
       <PhotoBand />
       <StatsRow />
-      <ServicesGrid />
       <ErpProduct />
       <CasesTeaser />
       <Process />
-      <SupportServices />
       <FAQ />
       <CtaBand />
     </>
